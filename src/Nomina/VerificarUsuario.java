@@ -7,6 +7,7 @@ package Nomina;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -41,7 +42,7 @@ public class VerificarUsuario extends javax.swing.JFrame {
         usuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         contraseña = new javax.swing.JPasswordField();
-        Boton = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -77,23 +78,28 @@ public class VerificarUsuario extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 90, 22));
 
         contraseña.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        getContentPane().add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 140, 29));
-
-        Boton.setBackground(new java.awt.Color(102, 255, 204));
-        Boton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        Boton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tick_48.png"))); // NOI18N
-        Boton.setToolTipText("Aceptar");
-        Boton.setBorder(null);
-        Boton.setBorderPainted(false);
-        Boton.setContentAreaFilled(false);
-        Boton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Boton.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tick_32.png"))); // NOI18N
-        Boton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonActionPerformed(evt);
+        contraseña.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                contraseñaKeyPressed(evt);
             }
         });
-        getContentPane().add(Boton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 60, 60));
+        getContentPane().add(contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 140, 29));
+
+        btnAceptar.setBackground(new java.awt.Color(102, 255, 204));
+        btnAceptar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tick_48.png"))); // NOI18N
+        btnAceptar.setToolTipText("Aceptar");
+        btnAceptar.setBorder(null);
+        btnAceptar.setBorderPainted(false);
+        btnAceptar.setContentAreaFilled(false);
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tick_32.png"))); // NOI18N
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 60, 60));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -157,7 +163,7 @@ public class VerificarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
        usu = usuario.getText();
        contra = contraseña.getText();
      /*  usuario1="admin";
@@ -177,7 +183,7 @@ public class VerificarUsuario extends javax.swing.JFrame {
        else {
            JOptionPane.showMessageDialog(this, "INVÁLIDO");
        }
-    }//GEN-LAST:event_BotonActionPerformed
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         // TODO add your handling code here:
@@ -202,6 +208,13 @@ public class VerificarUsuario extends javax.swing.JFrame {
         x=evt.getX();
         y=evt.getY();
     }//GEN-LAST:event_jLabel3MousePressed
+
+    private void contraseñaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contraseñaKeyPressed
+        int a=evt.getKeyCode();
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            btnAceptar.doClick();
+        }
+    }//GEN-LAST:event_contraseñaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -291,7 +304,7 @@ protected String contra;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Boton;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
